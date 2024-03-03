@@ -1,28 +1,26 @@
 const router = require('express').Router();
-const { Blog } = require('../models');
+const { Blog, User } = require('../models');
 const withAuth = require('../utils/auth');
 
-//dashboard
-router.get('/dashboard', withAuth, async (req, res) => {
+
+router.get('/', withAuth, async (req, res) => {
   try {
-   
-    const userBlogPosts = await BlogPost.findAll({
-      where: { user_id: req.session.user_id },
-      order: [['date_created', 'DESC']]
+    
+    const userData = await User.findByPk(req.session.user_id, {
+      include: [{ model: Blog }],
     });
 
- 
-    res.render('dashboard', { blogPosts: userBlogPosts, logged_in: true });
+    const user = userData.get({ plain: true });
+
+    
+    res.render('dashboard', {
+      user,
+      loggedIn: req.session.loggedIn,
+    });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Failed to fetch user blog posts' });
+    console.log(err);
+    res.status(500).json(err);
   }
 });
-
-//form to create a new blog post
-router.get('/dashboard/new', withAuth, (req, res) => {
-  res.render('newPost', { logged_in: true });
-});
-
 
 module.exports = router;
