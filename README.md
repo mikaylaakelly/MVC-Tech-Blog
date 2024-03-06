@@ -47,6 +47,8 @@ This app is for a business owner to be able to view and manage the departments, 
 - [Contributing](#contributing)
 - [Tests](#tests)
 - [Questions](#questions)
+##Screenshot
+![Uploading Screenshot (20).png…]()
 
 ## Installation
 To install the necessary items, run the command: To use this application you will need to use npm i to install the dependencies
