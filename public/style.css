@@ -1,0 +1,21 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: rgb(216, 65, 153);
+}
+
+.form-group label {
+    color: rgb(216, 65, 153);
+}
+
+.form-control {
+    border: 2px solid rgb(216, 65, 153);
+}
+
+.btn-primary {
+    background-color: rgb(216, 65, 153);
+    border-color: rgb(216, 65, 153);
+    color: rgb(216, 65, 153);
+}

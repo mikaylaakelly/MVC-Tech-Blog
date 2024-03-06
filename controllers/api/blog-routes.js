@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Blog, User, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// hompage blogs
+
 router.get('/', async (req, res) => {
   try {
     const blogData = await Blog.findAll({
@@ -31,7 +31,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-//blog by id
+
 router.get('/post/:id', async (req, res) => {
   try {
     const blogData = await Blog.findByPk(req.params.id, {
@@ -60,7 +60,6 @@ router.get('/post/:id', async (req, res) => {
   }
 });
 
-//new blog post
 router.post('/add', withAuth, async (req, res) => {
   try {
     const newBlog = await Blog.create({
@@ -75,7 +74,7 @@ router.post('/add', withAuth, async (req, res) => {
     res.status(400).json(err);
   }
 });
-// update
+
 router.put('/post/:id', withAuth, async (req, res) => {
   try {
     const updatedBlog = await Blog.update(
@@ -103,7 +102,7 @@ router.put('/post/:id', withAuth, async (req, res) => {
   }
 });
 
-// delete
+
 router.delete('/post/:id', withAuth, async (req, res) => {
   try {
     const blogData = await Blog.destroy({
